@@ -1,0 +1,45 @@
+<div class="card">
+  <div class="card-header">
+
+    <div class="row">
+
+      <div class="col-md-4"> Course List</div>
+      <div class="col-md-2">Filter by:</div>
+      <div class="col-md-4">
+        <input type="text" [(ngModel)]="listFilter" />
+      </div>
+    </div>
+  </div>
+
+  <div class="card-body">
+
+
+
+    <div class="table-responsive">
+      <table class="table mb-0">
+        <!-- *ngIf="products && products.length" -->
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Coefficient</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let course of filtredCourse">
+
+            <td>
+              {{course.title}}
+            </td>
+            <td>{{ course.coefficient }}</td>
+            <td>
+              <button class="btn btn-outline-primary btn-sm" [routerLink]="[course._id, 'edit']">
+                Edit
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>

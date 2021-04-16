@@ -1,0 +1,104 @@
+<div class="card">
+  <div class="card-header">
+    Edit Student
+  </div>
+
+  <div class="card-body" *ngIf="student">
+    <form novalidate #studentForm="ngForm">
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label">
+          First Name
+        </label>
+        <div class="col-md-8">
+          <input class="form-control" id="firstName" type="text" placeholder="First Name (required)" required
+            minlength="3" [(ngModel)]=student.firstName name="firstName" #firstName="ngModel" [ngClass]="{'is-invalid': (firstName.touched ||
+                                           firstName.dirty) &&
+                                           !firstName.valid }" />
+          <span class="invalid-feedback">
+            <span *ngIf="firstName.errors?.required">
+              student name is required.
+            </span>
+            <span *ngIf="firstName.errors?.minlength">
+              student name must be at least three characters.
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label">
+          last Name
+        </label>
+        <div class="col-md-8">
+          <input class="form-control" id="lastName" type="text" placeholder="last Name (required)" required
+            minlength="3" [(ngModel)]=student.lastName name="lastName" #lastName="ngModel" [ngClass]="{'is-invalid': (lastName.touched ||
+                                           lastName.dirty) &&
+                                           !lastName.valid }" />
+          <span class="invalid-feedback">
+            <span *ngIf="lastName.errors?.required">
+              student last name is required.
+            </span>
+            <span *ngIf="firstName.errors?.minlength">
+              student last name must be at least three characters.
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label">
+          Email
+        </label>
+        <div class="col-md-8">
+          <input class="form-control" id="email" type="email" placeholder="Email (required)" required minlength="3"
+            [(ngModel)]=student.email name="email" #email="ngModel" [ngClass]="{'is-invalid': (email.touched ||
+                                           email.dirty) &&
+                                           !email.valid }" />
+          <span class="invalid-feedback">
+            <span *ngIf="email.errors?.required">
+              Email is required.
+            </span>
+            <span *ngIf="email.errors?.minlength">
+              Must enter a valid email.
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label">
+          Level
+        </label>
+        <div class="col-md-8">
+          <input class="form-control" id="level" type="number" placeholder="level (required)" required
+            [(ngModel)]=student.level name="level" #level="ngModel" [ngClass]="{'is-invalid': (level.touched ||
+                                           level.dirty) &&
+                                           !level.valid }" />
+          <span class="invalid-feedback">
+            <span *ngIf="level.errors?.required">
+              level is required.
+            </span>
+            <span *ngIf="level.errors?.minlength">
+              Must enter a valid level.
+            </span>
+          </span>
+        </div>
+      </div>
+    </form>
+
+    <div class="row mb-2">
+      <div class="col-md-6">
+        <button class="btn btn-primary mr-3" type="button" (click)="saveStudent()">
+          Save
+        </button>
+        <button class="btn btn-outline-secondary mr-3" type="button" title="Cancel your edits"
+          [routerLink]="['/teachers/students']">
+          Cancel
+        </button>
+        <button class="btn btn-outline-warning" type="button" title="Delete this student" (click)="deleteStudent()">
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

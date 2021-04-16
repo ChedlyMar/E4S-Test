@@ -1,0 +1,61 @@
+<div class="card">
+  <div class="card-header">
+    Edit Course
+  </div>
+
+  <div class="card-body">
+    <form novalidate #courseForm="ngForm">
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label">
+          Title
+        </label>
+        <div class="col-md-8">
+          <input class="form-control" id="title" type="text" placeholder="Title (required)" required minlength="3"
+            [(ngModel)]=course.title name="title" #title="ngModel" [ngClass]="{'is-invalid': (title.touched ||
+                                           title.dirty) &&
+                                           !title.valid }" />
+          <span class="invalid-feedback">
+            <span *ngIf="title.errors?.required">
+              course title is required.
+            </span>
+            <span *ngIf="title.errors?.minlength">
+              course title must be at least three characters.
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label">
+          Coefficient
+        </label>
+        <div class="col-md-8">
+          <input class="form-control" id="coefficient" type="number" placeholder="coefficient (required)" required
+            [(ngModel)]=course.coefficient name="coefficient" #coefficient="ngModel" [ngClass]="{'is-invalid': (coefficient.touched ||
+                                           coefficient.dirty ) &&
+                                           !coefficient.valid }" />
+          <span class="invalid-feedback">
+            <span *ngIf="coefficient.errors?.required">
+              course coefficient is required.
+            </span>
+          </span>
+        </div>
+      </div>
+    </form>
+
+    <div class="row mb-2">
+      <div class="col-md-6">
+        <button class="btn btn-primary mr-3" type="button" (click)="saveCourse()">
+          Save
+        </button>
+        <button class="btn btn-outline-secondary mr-3" type="button" title="Cancel your edits"
+          [routerLink]="['/teachers/courses']">
+          Cancel
+        </button>
+        <button class="btn btn-outline-warning" type="button" title="Delete this course" (click)="deleteCourse()">
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
